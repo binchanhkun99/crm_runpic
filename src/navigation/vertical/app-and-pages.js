@@ -26,9 +26,16 @@ export default [
   },
   {
     title: 'Thông tin liên hệ',
-    icon: { icon: 'bxs-component' },
+    icon: { icon: 'bxs-contact' },
     children: [
       { title: 'Chỉnh sửa', to: 'apps-prompt-list' },
+    ],
+  },
+  {
+    title: 'Phân Tích Dữ Liệu',
+    icon: { icon: 'bxs-layer' },
+    children: [
+      { title: 'Phân tích', to: 'apps-prompt-chude' },
     ],
   },
 

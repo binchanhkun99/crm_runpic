@@ -24,8 +24,16 @@ const loggedIn = computed(() => store.getters.usersss);
 if (loggedIn.value) {
   router.push("/");
 }
-
+const notiError = ref(false);
+const pushNotiError = () => {
+  notiError.value = true;
+  setTimeout(() => {
+    notiError.value = false;
+  }, 2000);
+};
+const loadingEdit= ref()
 const handleLogin = () => {
+  loadingEdit.value = true
   const user = {
     username: form.value.username,
     password: form.value.password,
@@ -34,7 +42,8 @@ const handleLogin = () => {
   store
     .dispatch("login", user)
     .then(() => {
-      loading.value = false;
+      loadingEdit.value = false
+
       successStatus.value = true;
       router.push("/");
     })
@@ -42,7 +51,8 @@ const handleLogin = () => {
       console.log(error)
       loading.value = false;
       errorStatus.value = true;
-
+      loadingEdit.value = false
+      pushNotiError()
       setTimeout(() => {
         errorStatus.value = false;
       }, 3000);
@@ -64,6 +74,14 @@ const onSubmit = () => {
 </script>
 
 <template>
+   <!-- Error-->
+   <VDialog v-model="notiError" width="300">
+      <VCard color="primary" width="300">
+        <VAlert type="error">
+          <strong>Đã có lỗi xẩy ra vui lòng thử lại sau</strong>
+        </VAlert>
+      </VCard>
+    </VDialog>
   <div class="auth-wrapper d-flex align-center justify-center pa-4">
     <div class="position-relative">
       <!-- 👉 Top shape -->
@@ -172,7 +190,18 @@ const onSubmit = () => {
         </VCardText>
       </VCard>
     </div>
+        <!-- Dialog loading data edit-->
+        <VDialog v-model="loadingEdit" width="300">
+      <VCard color="primary" width="300">
+        <VCardText class="pt-3">
+          Waiting for login.....
+          <VProgressLinear indeterminate class="mb-0" />
+        </VCardText>
+      </VCard>
+    </VDialog>
+
   </div>
+  
 </template>
 
 <style lang="scss">

@@ -512,7 +512,7 @@ onMounted(() => {
                     :src="
                       user.banner.replace(
                         'banner\\',
-                        'http://localhost:8000/banner/'
+                        'https://api.runpic.vn/banner/'
                       )
                     "
                   />

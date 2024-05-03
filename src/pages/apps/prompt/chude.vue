@@ -255,6 +255,10 @@ const pushNotiError = () => {
 };
 const analysisText = async () => {
   try {
+    if(!folder.value){
+  alert("Vui lòng chọn sự kiện!!!")
+  return;
+}
     loadingEdit.value = true;
     const res = await request.get(`training_text/${folder.value}`);
     if (res.status === 200) {
@@ -275,7 +279,12 @@ async function searchImage() {
   const data = {
     type: "jpg",
     base64_string: base64String.value,
+    folder_data_search: folder.value
   };
+  if(!folder.value){
+  alert("Vui lòng chọn sự kiện!!!")
+  return;
+}
 
   const requestOptions = {
     method: "POST",
@@ -328,14 +337,14 @@ async function searchImage() {
       </p> -->
             <h5 class="text-h5">Phân tích Bib</h5>
 
-            <VueApexCharts
-              type="radialBar"
-              :height="200"
-              :options="chartOptions"
-              :series="series"
-            />
-            <p class="text-sm mt-2 mb-1">Tiến hành phân tích mã Bib</p>
-            <h6 class="text-sm font-weight-semibold mb-2">Data checking</h6>
+         <VueApexCharts
+           type="radialBar"
+           :height="200"
+           :options="chartOptions"
+           :series="series"
+         />
+         <p class="text-sm mt-2 mb-1">Tiến hành phân tích mã Bib</p>
+         <h6 class="text-sm font-weight-semibold mb-2">Data checking</h6>
 
             <VBtn @click="analysisText">Chạy phân tích</VBtn>
           </VCardText></VCol
@@ -351,18 +360,18 @@ async function searchImage() {
             />
             <h5 class="text-h5">Phân tích Khuôn mặt</h5>
 
-            <VueApexCharts
-              type="radialBar"
-              :height="200"
-              :options="chartOptions2"
-              :series="series"
-            />
-            <p class="text-sm mt-2 mb-1">Tiến hành phân khuôn mặt</p>
-            <h6 class="text-sm font-weight-semibold mb-2">Data checking</h6>
+         <VueApexCharts
+           type="radialBar"
+           :height="200"
+           :options="chartOptions2"
+           :series="series"
+         />
+         <p class="text-sm mt-2 mb-1">Tiến hành phân khuôn mặt</p>
+         <h6 class="text-sm font-weight-semibold mb-2">Data checking</h6>
 
-            <VBtn @click="searchImage">Chạy phân tích</VBtn>
-          </VCardText>
-        </VCol>
+         <VBtn @click="searchImage">Chạy phân tích</VBtn>
+       </VCardText>
+     </VCol>
       </VRow>
     </VCard>
 

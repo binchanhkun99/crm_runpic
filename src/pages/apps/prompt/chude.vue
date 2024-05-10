@@ -251,7 +251,7 @@ const pushNotiError = () => {
   notiError.value = true;
   setTimeout(() => {
     notiError.value = false;
-  }, 2000);
+  }, 2000); 
 };
 const analysisText = async () => {
   try {

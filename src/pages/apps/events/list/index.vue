@@ -18,7 +18,7 @@ const loading = ref(false);
 const apiKey = ref();
 const page = ref(1);
 const show1 = ref(false);
-
+const hardLink = ref(`${import.meta.env.VITE_API_URL}`)
 const isDialogVisible = ref(false);
 
 const userListMeta = [
@@ -512,7 +512,7 @@ onMounted(() => {
                     :src="
                       user.banner.replace(
                         'banner\\',
-                        'https://api.runpic.vn/banner/'
+                      `${hardLink}banner/`
                       )
                     "
                   />

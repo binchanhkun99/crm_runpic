@@ -229,7 +229,7 @@ function onFileChangeAdd(event) {
 const addUser = async () => {
   try {
     loadingAddUser.value = true;
-    const response = await request.post(`create_event`, {
+    const response = await request.post(`create_event/`, {
       name_event: name_event.value,
       address: address.value,
       folder: folder.value,

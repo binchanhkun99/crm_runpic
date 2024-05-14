@@ -44,7 +44,7 @@ const fetchEvents = async () => {
  
   await request
     .get(
-      `events?page=${page.value}&limit=${rowPerPage.value}&search=${searchQuery.value}`
+      `events/?page=${page.value}&limit=${rowPerPage.value}&search=${searchQuery.value}`
     )
     .then((rss) => {
       
@@ -92,7 +92,7 @@ const itemsSol = ref([
 const saveConfigImage = async ()=>{
     loading.value = true
     try {
-        const res = await request.post(`update_event_limit_race`,{
+        const res = await request.post(`update_event_limit_race/`,{
             event_id: selectAI.value,
             limit_race: race_limit.value
         },

@@ -65,7 +65,7 @@ const fetchEvents = async () => {
   apiKey.value = data.key;
   await request
     .get(
-      `events?page=${page.value}&limit=${rowPerPage.value}&search=${searchQuery.value}`
+      `events/?page=${page.value}&limit=${rowPerPage.value}&search=${searchQuery.value}`
     )
     .then((rss) => {
       if (rss.status === 200) {
@@ -90,7 +90,7 @@ const fetchEventsPag = async (page) => {
   apiKey.value = data.key;
   await request
     .get(
-      `events?page=${page}&limit=${rowPerPage.value}&search=${searchQuery.value}`
+      `events/?page=${page}&limit=${rowPerPage.value}&search=${searchQuery.value}`
     )
     .then((rss) => {
       if (rss.data.success) {
@@ -312,7 +312,7 @@ const showEdit = async (id) => {
   idGptEdit.value = id;
   loadingEdit.value = true;
   try {
-    const res = await request.get(`events_by_id?event_id=${idGptEdit.value}`);
+    const res = await request.get(`events_by_id/?event_id=${idGptEdit.value}`);
     // console.log("HIHIHII", res);
     if (res.status === 200) {
       const data = res.data;
@@ -512,7 +512,7 @@ onMounted(() => {
                     :src="
                       user.banner.replace(
                         'banner\\',
-                      `${hardLink}banner/`
+                      `${hardLink}/banner/`
                       )
                     "
                   />

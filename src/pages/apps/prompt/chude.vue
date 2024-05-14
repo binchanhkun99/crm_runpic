@@ -136,7 +136,7 @@ const items2 = ref([
 ]);
 const getAllEvents = async () => {
   await request
-    .get(`events`)
+    .get(`events/`)
     .then((rss) => {
       console.log("Test status", rss.data);
       if (rss.status === 200) {
@@ -217,7 +217,7 @@ const saveForm = async () => {
 
   try {
     loading.value = true;
-    const res = await request.post(`update_contact`, {
+    const res = await request.post(`update_contact/`, {
       contact_id: 1,
       company_name: company_name.value,
       address_company: address_company.value,
@@ -296,7 +296,7 @@ async function searchImage() {
 
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_API_URL}search`,
+      `${import.meta.env.VITE_API_URL}search/`,
       requestOptions
     );
     if (!response.ok) {

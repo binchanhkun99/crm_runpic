@@ -1,7 +1,7 @@
 import request, { setAuth } from "../utils/request";
 
 
-const API_URL_LOGIN = "login";
+const API_URL_LOGIN = "login/";
 const API_URL_REG = "register";
 
 class AuthService {

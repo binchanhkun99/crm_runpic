@@ -312,7 +312,7 @@ const showEdit = async (id) => {
   idGptEdit.value = id;
   loadingEdit.value = true;
   try {
-    const res = await request.get(`events_by_id/?event_id=${idGptEdit.value}`);
+    const res = await request.get(`events_by_id?event_id=${idGptEdit.value}`);
     // console.log("HIHIHII", res);
     if (res.status === 200) {
       const data = res.data;

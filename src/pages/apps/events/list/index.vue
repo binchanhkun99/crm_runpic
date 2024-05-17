@@ -161,7 +161,7 @@ const handleOk = (e) => {
 };
 const deleteUser = async () => {
   try {
-    const deleteUsr = await request.post(`edelete_event/${idDelete.value}`);
+    const deleteUsr = await request.post(`delete_event/${idDelete.value}`);
 
     if (deleteUsr.status == 200) {
       fetchEvents();
@@ -308,6 +308,7 @@ function resetEditValues() {
 }
 const idGptEdit = ref();
 const showEdit = async (id) => {
+
   resetEditValues();
   idGptEdit.value = id;
   loadingEdit.value = true;
@@ -359,9 +360,10 @@ const SaveEdit = async () => {
         name_event: Edit.value.name_event,
         address: Edit.value.address,
         folder: Edit.value.folder,
-        banner: Edit.value.banner,
+        image_base64: Edit.value.banner,
         start_date: Edit.value.start_date,
         number_date: Edit.value.number_date,
+        typeFile: fileType.value
       },
       {
         "Access-Control-Allow-Origin": "*",

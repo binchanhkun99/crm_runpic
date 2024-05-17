@@ -514,7 +514,7 @@ onMounted(() => {
                     :src="
                       user.banner.replace(
                         'banner/',
-                      `${hardLink}/banner/`
+                      `${hardLink}banner/`
                       )
                     "
                   />
